@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs', { pageTitle: 'Lista Productos' }) %>
+</head>
+<body>
+    <h2>Lsita de Productos</h2>
+    <ul>
+        <% for( let i=0; i < productList.length; i++) { %>
+            <li>
+                <h2>
+                    <% productList[i].pdtName %> 
+                </h2>
+                <p><strong> $ <%= productList[i].pdtPrice %> </strong></p>
+            </li> 
+            <% } %> 
+    </ul>
+</body>
+</html>

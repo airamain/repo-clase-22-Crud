@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs', { pageTitle: 'CREAR PRDUCTO' }) %>
+
+</head>
+
+<body>
+    <h2>Formulario para crear producto</h2>
+    <form action="/products" method="post">
+        <div>
+            <label>Nombre:</label>
+            <input type="text" name="pdtName">
+        </div>
+        <div>
+            <label>Precio:</label>
+            <input type="text" name="pdtPrice">
+        </div>
+        <button type="submit">GUARDAR</button>
+    </form>
+</body>
+
+</html>
