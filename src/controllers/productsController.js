@@ -24,14 +24,13 @@ const controller = {
         res.send('formulario que edita un producto' + productId);
     },
     add: (req, res) => {
-        console.log(req.body);
-       
-
+     
         // Se guarda
         productArray.push(
             {
                  pdtName: req.body.pdtName,
-                 pdtPrice: req.body.pdtPrice
+                 pdtPrice: req.body.pdtPrice,
+                 imageFile: req.file ? req.file.filename : 'yo.jpg'
             }
         )
         fs.writeFileSync(filePath, JSON.stringify(productArray, null, ''))

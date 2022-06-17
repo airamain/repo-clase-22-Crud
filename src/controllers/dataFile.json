@@ -1,0 +1,12 @@
+{"body":
+    {"pdtName":"","pdtPrice":""},
+    "miArchivo":
+    {"fieldname":"productImage",
+        "originalname":"yo.jpeg",
+        "encoding":"7bit",
+        "mimetype":"image/jpeg",
+        "destination":"public/uploads/",
+        "filename":"1655420878786_yo.jpeg",
+        "path":"public/uploads/1655420878786_yo.jpeg",
+        "size":3893}
+    }

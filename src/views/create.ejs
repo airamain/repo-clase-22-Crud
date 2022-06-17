@@ -8,7 +8,9 @@
 
 <body>
     <h2>Formulario para crear producto</h2>
-    <form action="/products" method="post">
+    <form action="/products" method="post" enctype="multipart/form-data">
+        <label>Subir Imagen</label>
+        <input type="file" name="productImage">
         <div>
             <label>Nombre:</label>
             <input type="text" name="pdtName">
