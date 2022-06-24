@@ -8,16 +8,31 @@
 
 <body>
     <h2>Formulario para crear producto</h2>
-    <form action="/products" method="post" enctype="multipart/form-data">
-        <label>Subir Imagen</label>
-        <input type="file" name="productImage">
+    <form action="/products" method="post">
+       
         <div>
             <label>Nombre:</label>
-            <input type="text" name="pdtName">
+            <input 
+            type="text" 
+            name="pdtName"
+            value="<%= locals?.oldBodyData?.pdtName %>"
+            required
+            >
+        </div>
+        <div class="text-danger">
+            <%= locals.messageErrors && messageErrors.pdtName != undefined ? messageErrors.pdtName.msg : "" %> 
         </div>
         <div>
             <label>Precio:</label>
-            <input type="text" name="pdtPrice">
+
+            <input 
+            type="text" 
+            name="pdtPrice"
+            value="<%= locals?.oldBodyData?.pdtPrice %>"
+            >
+            <div class="text-danger">
+                <%= locals?.messageErrors?.pdtPrice?.msg %> 
+            </div>
         </div>
         <button type="submit">GUARDAR</button>
     </form>

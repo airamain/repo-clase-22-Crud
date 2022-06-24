@@ -3,6 +3,8 @@ const express = require('express');
 const mainRouter = require('./routes/mainRouter');
 const productsRoutes = require('./routes/productsRoutes')
 
+const mdEjemplo = require("./middleware/mdEjemplo");
+
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
@@ -17,6 +19,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 // Setup del req.body
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
+
+//Middleware
+app.use(mdEjemplo);
+
 
 // ruta home
 app.use(mainRouter);
