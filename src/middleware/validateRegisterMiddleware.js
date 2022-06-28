@@ -25,7 +25,7 @@ module.exports = [
     check('avatar')
     .custom((value, { req }) =>{
         let file = req.file;
-        let acceptedExtensions = ['.jpg', 'png', '.gif', '.jpeg'];
+        let acceptedExtensions = ['.jpg', '.png', '.gif', '.jpeg'];
 
         if(!file){
             throw new Error('Tenes que subir tu avatar');
