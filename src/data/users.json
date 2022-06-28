@@ -1,1 +1,9 @@
-[]
+[
+ {
+  "id": 1,
+  "fullname": "adrian",
+  "email": "a@a.com",
+  "password": "$2a$10$thv0LmTsoil9IJ5BalHEiusSBddfQ59nwwNMFZIFfLQ5cR7yxVXl2",
+  "avatar": "1656446490488_avatar.jpeg"
+ }
+]
