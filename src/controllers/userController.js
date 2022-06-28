@@ -44,12 +44,12 @@ const controller = {
 
         fs.writeFileSync(filePath, JSON.stringify(usersDb, null, " "));
 
-        return res.redirect("/user/login");
+        return res.redirect("/users/login");
     },
 
     // LoginForm
     login: (req, res) => {
-        return res.render("userLoginForm");
+        return res.render("login");
     },
 
     // Login data
