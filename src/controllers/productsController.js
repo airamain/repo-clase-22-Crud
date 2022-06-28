@@ -7,7 +7,6 @@ const { validationResult } = require('express-validator');
 const filePath = path.resolve(__dirname, '../data/products.json');
 const productArray = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-
 const controller = {
     browse: (req, res) => {
         res.send('estamos en /products');
@@ -26,9 +25,6 @@ const controller = {
     },
     add: (req, res) => {
         const arrayErrors = validationResult(req);
-        //if(!arrayErrors.isEmpty()) 
-
-        console.log("error =>", arrayErrors.errors.length);
 
         if (arrayErrors.errors.length > 0) {
              return res.render('create', {
@@ -49,7 +45,6 @@ const controller = {
 
         //  Y luego rediecionar
         res.redirect('/products?saved=true');
-
 
     },
     update: (req, res) => {

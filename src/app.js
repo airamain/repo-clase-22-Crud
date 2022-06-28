@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const mainRouter = require('./routes/mainRouter');
 const productsRoutes = require('./routes/productsRoutes')
+const userRouters = require('./routes/userRoutes')
 
 const mdEjemplo = require("./middleware/mdEjemplo");
 
@@ -26,5 +27,10 @@ app.use(mdEjemplo);
 
 // ruta home
 app.use(mainRouter);
+
+// products
 app.use('/products', productsRoutes);
+
+// Users
+app.use('/users', userRouters)
 

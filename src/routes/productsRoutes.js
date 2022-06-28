@@ -27,6 +27,7 @@ router.get('/', controller.browse);
 
 // GET - localhost:3000/products/create => redirecciona una view en el controller
 router.get('/create', controller.create);
+
 // POST - localhost:3000/products
 router.post('/', [
     body("pdtName").notEmpty().withMessage("El Nombre es obligatorio"),
