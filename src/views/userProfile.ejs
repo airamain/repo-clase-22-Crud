@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head.ejs', { pageTitle: 'Mi Perfil de Usuario' }) %>
+</head>
+
+<body>
+    <form class="ps-col l6 ps-padding-large" action="/users/register" method="POST" enctype="multipart/form-data">
+
+        <h1>Perfil Usuario</h1>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" name="fullname" value="<%= locals?.oldData?.fullname %>" >
+        </div>
+        <div class="text-danger">
+            <%= locals.messageErrors && messageErrors.fullname !=undefined ? messageErrors.fullname.msg : "" %>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" value="<%= locals?.oldData?.email %>" >
+            <div class="text-danger">
+                <%= locals?.messageErrors?.email?.msg %>
+            </div>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" value="<%= locals?.oldData?.password %>" >
+            <div class="text-danger">
+                <%= locals?.messageErrors?.password?.msg %>
+            </div>
+        </div>
+        <div>
+            <label>Confirmar Password:</label>
+            <input type="password" name="rePassword" value="<%= locals?.oldData?.rePassword %>" >
+            <div class="text-danger">
+                <%= locals?.messageErrors?.rePassword?.msg %>
+            </div>
+        </div>
+        <div>
+            <label>Subir mi Avatar</label>
+        <input type="file" name="avatar">
+        <div class="text-danger">
+            <%= locals?.messageErrors?.avatar?.msg %>
+        </div>
+        </div>
+        <button type="submit">Regristrar</button>
+
+    </form>
+</body>
+
+</html>
