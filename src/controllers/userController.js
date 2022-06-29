@@ -4,11 +4,8 @@ const bcrypt = require('bcryptjs');
 
 const { validationResult } = require("express-validator");
 
-const bcrypt = require('bcryptjs');
-
 const filePath = path.resolve(__dirname, '../data/users.json');
 const usersDb = JSON.parse(fs.readFileSync(filePath, 'utf8'))
-
 
 const controller = {
 
@@ -88,6 +85,13 @@ const controller = {
 
     // Formulario Profile User
     profile: (req, res) => {
+        return res.render("userProfile", {
+            user: req.session.userLogged
+        })
+    },
+
+    // Cerrar sesion
+    logout: (req, res) => {
         return res.render("userProfile", {
             user: req.session.userLogged
         })
