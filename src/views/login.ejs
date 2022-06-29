@@ -2,12 +2,19 @@
 <html lang="en">
 
 <head>
+      <%- include('./partials/nav.ejs') %>
     <%- include('./partials/head.ejs', { pageTitle: 'Loguear Usuario' }) %>
 </head>
 
 <body>
-    <h2>Mi Login</h2>
-    <form action="/users/login" method="POST">
+    <br>
+    
+    <br>
+    <br>
+    
+    <br>
+    <form class="container" action="/users/login" method="POST">
+        <h2>Login</h2>
 
         <div>
             <label>Nombre:</label>
@@ -19,7 +26,7 @@
         <div>
             <label>Password:</label>
 
-            <input type="text" name="password" value="<%= locals?.oldBodyData?.password %>">
+            <input type="password" name="password" value="<%= locals?.oldBodyData?.password %>">
             <div class="text-danger">
                 <%= locals?.messageErrors?.password?.msg %>
             </div>

@@ -2,29 +2,27 @@
 <html lang="en">
 
 <head>
-    <%- include('./partials/head.ejs', { pageTitle: 'Mi Perfil de Usuario' }) %>
+    <%- include('./partials/head.ejs', { pageTitle: 'Perfil de Usuario' }) %>
 </head>
 
 <body>
-        <h1>Perfil Usuario</h1>
-        <div>
-            <label>Nombre:</label>
-            <input type="text" name="fullname" value="<%= user.fullname %>" >
-        </div>
-        
-        <div>
-            <label>Email:</label>
-            <input type="email" name="email" value="<%= user.email %>" >
-        </div>
-        
-        <div>
-            <label>Avatar</label>
-            <img src="/uploads/avatars/<%= user.avatar %> " alt="" srcset="">
+    <h1>Mi Perfil de <%= user.fullname %> </h1>
+    
+    <div>
+        <label>Nombre y Apellido</label>
+        <input type="text" name="fullname" value="<%= user.fullname %>" >
+        <img src="/uploads/avatars/<%= user.avatar %> "
+    </div>
 
-        </div>
-        <form class="" action="/users/logout" method="POST">
-            <button>Salir</button>
-    </form>
+    <div>
+        <label>Email:</label>
+        <input type="email" name="email" value="<%= user.email %>" >  
+    </div>
+ 
+    <form class="ps-col l6 ps-padding-large" action="/users/logout" method="POST">
+    <button type="submit">Cerrar Session</button>
+    
+</form>
 </body>
 
 </html>

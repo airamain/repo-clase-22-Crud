@@ -2,13 +2,24 @@
 <html lang="en">
 
 <head>
+    <%- include('./partials/nav.ejs') %>
     <%- include('./partials/head.ejs', { pageTitle: 'Regristrar Usuario' }) %>
 </head>
 
 <body>
+<<<<<<< Updated upstream
     <form class="ps-col l6 ps-padding-large" action="/users/register" method="post" enctype="multipart/form-data">
+=======
+    <br>
+    
+    <br>
+    <br>
+    
+    <br>
+    <form class="container"  action="/users/register" method="POST" enctype="multipart/form-data">
+        <h2>Registrar</h2>
+>>>>>>> Stashed changes
 
-        <h1>Registrar Usuario</h1>
         <div>
             <label>Nombre:</label>
             <input type="text" name="fullname" value="<%= locals?.oldData?.fullname %>" >
