@@ -1,23 +1,25 @@
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require('bcryptjs');
 
 const { validationResult } = require("express-validator");
 
 const filePath = path.resolve(__dirname, '../data/users.json');
 const usersDb = JSON.parse(fs.readFileSync(filePath, 'utf8'))
 
+
 const controller = {
 
-// Formulario
+    // Formulario
     register: (req, res) => {
         return res.render("register");
     },
 
-// Register Data
+    // Register Data
     proccesRegister: (req, res) => {
-        const resultValidation  = validationResult(req);
+        const resultValidation = validationResult(req);
 
-        if(resultValidation.errors.length > 0) {
+        if (resultValidation.errors.length > 0) {
             return res.render('register', {
                 messageErrors: resultValidation.mapped(),
                 oldData: req.body
@@ -26,7 +28,7 @@ const controller = {
 
         const generateId = () => {
             let lastUser = usersDb[usersDb.length - 1];
-            if(lastUser) {
+            if (lastUser) {
                 return lastUser.id + 1;
             }
             return 1;
@@ -37,7 +39,9 @@ const controller = {
 
         let userToCreate = {
             id: generateId(),
-            ...bodyData
+            ...bodyData,
+            password: bcrypt.hashSync(bodyData.password, 10),
+            avatar: req.file.filename
         }
 
         usersDb.push(userToCreate);
@@ -54,11 +58,29 @@ const controller = {
 
     // Login data
     loginProcess: (req, res) => {
-        return res.render("Vamos a Loguearnos")
-    }
-    
-    //
+        // 1. Verificar si el usuario exist en la DB
+        const userToLogin = usersDb.find(oneUser => oneUser.email === req.body.email)
 
+        if (userToLogin) {
+            // 2. Comparamos contraseña
+            const isPasswordCorrect = bcrypt.compareSync(req.body.password, userToLogin.password)
+
+            if (isPasswordCorrect) {
+                //3. Guardar el usuario en la Session
+                delete userToLogin.password; // Borrarmos el pass para no tenerlos en la session
+                req.session.userLogged = userToLogin;
+
+                return res.redirect('/users/profile')
+            }
+        }
+    },
+
+    // Formulario Profile User
+    profile: (req, res) => {
+        return res.render("userProfile", {
+            user: req.session.userLogged
+        })
+    }
 }
 
 

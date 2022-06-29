@@ -1,8 +1,9 @@
 [
  {
   "id": 1,
-  "fullname": "ww",
+  "fullname": "Adrian",
   "email": "a@a.com",
-  "password": "123"
+  "password": "$2a$10$nQ46wS1rzOveNjzU5BEFy.Wmpt08ka2xuuT/MJy6V4mOXfQOdCCZC",
+  "avatar": "1656458008861_avatar.webp"
  }
 ]

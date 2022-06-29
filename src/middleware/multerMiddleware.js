@@ -23,11 +23,9 @@ const uploadFile = multer({
     fileFilter: function (req, file, cb) {
         try {
             let type = file.mimetype.startsWith('image/');
-
             if (type)
                 cb(null, true)
             else throw new Error('No es un archivo permitido')
-
         } catch (error) {
             cb(null, false);
         }

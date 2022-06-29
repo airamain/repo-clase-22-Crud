@@ -22,7 +22,7 @@ router.get('/login', usersController.login);
 router.post('/login', usersController.loginProcess);
 
 // Perfil usuario
- //router.get('/profile', usersController.profile);
+ router.get('/profile', usersController.profile);
 
 // Logout
  //router.post('logout', usersController.logout)

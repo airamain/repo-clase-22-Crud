@@ -3,6 +3,7 @@ const express = require('express');
 const mainRouter = require('./routes/mainRouter');
 const productsRoutes = require('./routes/productsRoutes')
 const userRouters = require('./routes/userRoutes')
+const session = require('express-session');
 
 const mdEjemplo = require("./middleware/mdEjemplo");
 
@@ -14,6 +15,12 @@ const PORT = 3000;
 app.listen(PORT, ()=>{
     console.log('Server corriendo en port: ', PORT);
 })
+
+app.use(session({
+    secret: 'empanada',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
