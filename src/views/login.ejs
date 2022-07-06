@@ -16,18 +16,20 @@
 
         <div>
             <label>Nombre:</label>
-            <input type="email" name="email" value="<%= locals?.oldBodyData?.email %>" required>
+            <input type="email" name="email" value="<%= %>" >
         </div>
         <div class="text-danger">
-            <%= locals.messageErrors && messageErrors.email !=undefined ? messageErrors.email.msg : "" %>
-        </div>
+           </div>
         <div>
             <label>Password:</label>
 
-            <input type="password" name="password" value="<%= locals?.oldBodyData?.password %>">
+            <input type="password" name="password" value="<%= %>">
             <div class="text-danger">
-                <%= locals?.messageErrors?.password?.msg %>
+                <%= locals?.messageErrors %>
             </div>
+        </div>
+        <div>
+            <input type="checkbox" name="rememberUser" id="">
         </div>
         <button type="submit">Entrar</button>
 

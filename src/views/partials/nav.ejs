@@ -1,19 +1,25 @@
- <!-- Navbar (sit on top) -->
- <nav class="ps-top">
-    <div class="ps-bar ps-white ps-padding ps-card ps-nav">
-      <a href="#home" class="ps-bar-item ps-button">Pimienta & Sal</a>
-      <!-- Right-sided navbar links. Hide them on small screens -->
-      <div class="ps-right ps-hide-small">
-        <a href="#about" class="ps-bar-item ps-button">About</a>
-        <a href="#menu" class="ps-bar-item ps-button">Menu</a>
-
-        
+<!-- Navbar (sit on top) -->
+<nav class="ps-top">
+  <div class="ps-bar ps-white ps-padding ps-card ps-nav">
+    <a href="/" class="ps-bar-item ps-button">Pimienta & Sal</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="ps-right ps-hide-small">
+      <a href="#about" class="ps-bar-item ps-button">About</a>
+      <a href="#menu" class="ps-bar-item ps-button">Menu</a>
+      
+      <% if (locals.isUserLogged===true) { %>
         <a href="/products" class="ps-bar-item ps-button">Listado Producto</a>
         <a href="/products/create" class="ps-bar-item ps-button">Crear Producto</a>
-        
-        <a href="/users/register" class="ps-bar-item ps-button">Registrar Usuario</a>
-        
-        <a href="/users/login" class="ps-bar-item ps-button">Login Usuario</a>
-      </div>
+        <form action="/users/logout" method="post">
+         <button type="submit">logout</button>
+        </form>
+        <span>hola <%= userData.name %></span>  
+        <% } else { %>
+
+          <a href="/users/register" class="ps-bar-item ps-button">Registrar Usuario</a>
+          <a href="/users/login" class="ps-bar-item ps-button">LOGIN</a>
+          <% } %>
+
     </div>
-  </nav>
+  </div>
+</nav>

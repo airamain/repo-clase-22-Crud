@@ -11,6 +11,8 @@ const controller = {
 
     // Formulario
     register: (req, res) => {
+        res.cookie('miCookie', 'Adrian', {maxAge: 1000 * 3})
+
         return res.render("register");
     },
 
@@ -66,20 +68,27 @@ const controller = {
 
     // Login data
     loginProcess: (req, res) => {
+       
+        // return res.json(req.body)
         // 1. Verificar si el usuario exist en la DB
         const userToLogin = usersDb.find(oneUser => oneUser.email === req.body.email)
 
         if (userToLogin) {
             // 2. Comparamos contraseña
-            const isPasswordCorrect = bcrypt.compareSync(req.body.password, userToLogin.password)
+            const isPasswordCorrect = bcrypt.compareSync(req.body.password, userToLogin.password);
 
             if (isPasswordCorrect) {
                 //3. Guardar el usuario en la Session
                 delete userToLogin.password; // Borrarmos el pass para no tenerlos en la session
                 req.session.userLogged = userToLogin;
-
                 return res.redirect('/users/profile')
             }
+            else {
+                return res.render('login', {
+                    messageErrors: 'Login invalido'
+                });
+            }
+            
         }
     },
 
@@ -92,9 +101,8 @@ const controller = {
 
     // Cerrar sesion
     logout: (req, res) => {
-        return res.render("userProfile", {
-            user: req.session.userLogged
-        })
+        req.session.destroy();
+        return res.redirect('/');
     }
 }
 

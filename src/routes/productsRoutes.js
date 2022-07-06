@@ -4,6 +4,9 @@ const path = require('path');
 
 const { body } = require('express-validator');
 
+
+const authMiddleware = require('../middleware/authMiddleware');
+
 const multer = require('multer');
 const myStorage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -26,7 +29,7 @@ const controller = require('../controllers/productsController');
 router.get('/', controller.browse);
 
 // GET - localhost:3000/products/create => redirecciona una view en el controller
-router.get('/create', controller.create);
+router.get('/create',authMiddleware, controller.create);
 
 // POST - localhost:3000/products
 router.post('/', [

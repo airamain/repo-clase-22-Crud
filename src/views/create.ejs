@@ -3,12 +3,17 @@
 
 <head>
     <%- include('./partials/head.ejs', { pageTitle: 'CREAR PRDUCTO' }) %>
+        <%- include('./partials/nav.ejs') %>
+
 </head>
 
 <body>
-    <h2>Formulario para crear producto</h2>
-    <form action="/products" method="post">
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <form class="container" action="/products" method="POST">
+        <h2>Formulario para crear producto</h2>
         <div>
             <label>Nombre:</label>
             <input type="text" name="pdtName" value="<%= locals?.oldBodyData?.pdtName %>" required>
